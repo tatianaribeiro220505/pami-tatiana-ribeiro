@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-interface Tarefa {
-  id: string;
-  texto: string;
-  concluida: boolean;
-}
-
-export default function IndexScreen() {
-  const [nome, setNome] = useState<string>('');
-  const [tarefa, setTarefa] = useState<string>('');
-  const [lista, setLista] = useState<Tarefa[]>([]);
+export default function App() {
+  const [nome, setNome] = useState('');
+  const [tarefa, setTarefa] = useState('');
+  const [lista, setLista] = useState([]);
 
   const saudar = () => {
     if (nome.trim() === '') return alert('Digite seu nome para continuar!');
@@ -23,7 +17,7 @@ export default function IndexScreen() {
     setTarefa('');
   };
 
-  const alternarConclusao = (id: string) => {
+  const alternarConclusao = (id) => {
     setLista(prev =>
       prev.map(item => item.id === id ? { ...item, concluida: !item.concluida } : item)
     );
